@@ -4,7 +4,7 @@ import UserForm from './Components/form';
 export default class App extends Component {
   render() {
     return (
-<UserForm />
+<UserForm {...this.props}/>
     )
   }
 }

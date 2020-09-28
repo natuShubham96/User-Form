@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Form, FormControl,FormGroup,FormLabel,Col,Row,ButtonGroup,Button} from 'react-bootstrap';
 import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies';
+import {Link} from 'react-router-dom';
 
 const Email_cookie_key = "EMAIL";   //Common cookie key, to be used by all cokkie functions
 const Password_cookie_key = "PASSWORD";
@@ -34,6 +35,7 @@ export default class UserForm extends Component {
       }
       onSubmit = () => {
         this.setState({submitted: true})
+        this.props.history.push('/LogIn')
       }
       onReset = () => {
         this.setState({submitted: false, email: '', password: ''});
@@ -55,7 +57,7 @@ render() {
     let emailToDisplay = `Email - ${this.state.email}`;
 
   return (
-    <div>
+    <div style={{marginLeft: 20, marginTop:20}}>
    <Form>
      <FormGroup as={Row}>
        <FormLabel column>Email Here</FormLabel>
@@ -74,6 +76,9 @@ render() {
        <Col><Button onClick={this.onReset} className="resetButton">Reset</Button></Col>
      </ButtonGroup>
    </Form>
+   <div style={{marginTop:20}}>
+   <Link to="/AboutUs">About Us</Link>
+   </div>
   {this.state.submitted && <div><h2 className="emailheader">{emailToDisplay}</h2><h2 className="passwordheader">Fool Password Cannot be displayed!!!!</h2></div>}
     </div>
   )

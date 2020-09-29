@@ -6,7 +6,7 @@ export default class AboutUs extends Component {
         return (
             <div>
             <h1>Bunch of hippies!!!!</h1>
-            <Link to="/">Go Back!!!!!</Link>
+            <Link to="/"><h2>Go Back!!!!!</h2></Link>
             </div>
         )
     }

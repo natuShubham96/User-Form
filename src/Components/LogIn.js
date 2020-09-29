@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {Form,FormGroup,FormControl,Button, Row,Col} from 'react-bootstrap'
 import {addTeamAction,removeTeamAction} from '../Actions'
 
-class LogIn extends Component {
+export class LogIn extends Component {
 
     constructor() {
         super();

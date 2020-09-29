@@ -4,7 +4,7 @@ import {bake_cookie,read_cookie} from 'sfcookies'
 
 const Teams_Cookie = "Teams_Cookie";
 
-class TeamList extends Component {
+export class TeamList extends Component {
 
     constructor(props) {
         super();
@@ -31,7 +31,7 @@ class TeamList extends Component {
         return (
             <div>
             {teams.length===0 && <h1>No Team to display, Add some!!!</h1>}
-            <div>{teams.map(team => <h1 className="team-list">{team.name}</h1>)}</div>
+            <div>{teams.map(team => <h1 key={teams.length} className="team-list">{team.name}</h1>)}</div>
             <button style={{marginLeft:20}} onClick={this.onGoBackClick}>Go Back</button>
             </div>
         )

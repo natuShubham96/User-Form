@@ -53,9 +53,6 @@ export default class UserForm extends Component {
       }
 
 render() {
-
-    let emailToDisplay = `Email - ${this.state.email}`;
-
   return (
     <div style={{marginLeft: 20, marginTop:20}}>
    <Form>
@@ -76,10 +73,6 @@ render() {
        <Col><Button onClick={this.onReset} className="resetButton">Reset</Button></Col>
      </ButtonGroup>
    </Form>
-   <div style={{marginTop:20}}>
-   <Link to="/AboutUs">About Us</Link>
-   </div>
-  {this.state.submitted && <div><h2 className="emailheader">{emailToDisplay}</h2><h2 className="passwordheader">Fool Password Cannot be displayed!!!!</h2></div>}
     </div>
   )
 }

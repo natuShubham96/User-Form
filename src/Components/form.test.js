@@ -2,9 +2,11 @@ import React from 'react';
 import {shallow, mount} from 'enzyme'; // for mimicking the behaviour of component getting mounted on dom
 import UserForm from './form';
 
+const historyMock = { push: jest.fn() };   //Mocking push function of react-router
+
 //Wrapper of jest wrapping test function, first arg is description of testcase and second is actual function to run
 describe("User Form" ,  () => {
-    let userForm = shallow(<UserForm />);   //Mount the UserForm component
+    let userForm = shallow(<UserForm history={historyMock}/>);   //Mount the UserForm component
 
     it("renders button", () => {
         expect(userForm.find('.submitButton').text()).toEqual('Submit')
@@ -36,7 +38,7 @@ describe("User Form" ,  () => {
 
         })
 
-        it("validate email chnage", () => {
+        it("validate email change", () => {
             expect(userForm.state().email).toEqual("name@example.com")     //Validating state values, state() can only be called on root, hence called on userForm
         })
 
@@ -51,14 +53,7 @@ describe("User Form" ,  () => {
 
             it("Check if submitted", () => {
                 expect(userForm.state().submitted).toEqual(true)
-            })
-
-            it("Checking email header", () => {
-                expect(userForm.find(".emailheader").text()).toEqual("Email - name@example.com")
-            })
-
-            it("Checking Password header", () => {
-                expect(userForm.find(".passwordheader").text()).toEqual("Fool Password Cannot be displayed!!!!")
+                expect(historyMock.push.mock.calls[0]).toEqual([ ('/LogIn') ]);  //Checking url pushed via history function received in props via react-router
             })
         })
 
@@ -82,7 +77,7 @@ describe("User Form" ,  () => {
                     expect(userForm2.state().email).toEqual([])
                 })
 
-                it("Validating clearedpassword", () => {
+                it("Validating cleared password", () => {
                     expect(userForm2.state().password).toEqual([])
                 })
             })
